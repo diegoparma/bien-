@@ -122,7 +122,7 @@ contactForm.addEventListener('submit', (e) => {
     const data = Object.fromEntries(formData);
     
     // Create mailto link
-    const subject = encodeURIComponent('Consulta desde el sitio web +bien');
+    const subject = encodeURIComponent('Consulta desde el sitio web Grupo +');
     const body = encodeURIComponent(
         `Nombre: ${data.name}\n` +
         `Email: ${data.email}\n` +
@@ -407,6 +407,6 @@ createBackToTopButton();
 // ===================================
 // Console Message
 // ===================================
-console.log('%c+bien', 'font-size: 48px; font-weight: bold; color: #3498DB;');
-console.log('%cInversión patrimonial con visión de futuro', 'font-size: 16px; color: #2C3E50;');
+console.log('%cINMOBILIARIA', 'font-size: 42px; font-weight: bold; color: #998675;');
+console.log('%cServicio inmobiliario integral', 'font-size: 16px; color: #4D4D4D;');
 console.log('%cSitio web desarrollado con ❤️', 'font-size: 12px; color: #6C757D;');
