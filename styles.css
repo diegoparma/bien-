@@ -228,7 +228,11 @@ section > .scroll-indicator {
     text-align: center;
     color: var(--text-light);
     width: 100%;
-    padding-top: clamp(130px, 18vh, 210px);
+    padding-top: clamp(90px, 12vh, 140px);
+}
+
+.hero-content .container {
+    transform: translateY(-70px);
 }
 
 .hero-logo {
@@ -1084,6 +1088,10 @@ section > .scroll-indicator {
     .hero-logo img {
         height: 260px;
         max-width: 88vw;
+    }
+
+    .hero-content .container {
+        transform: translateY(-30px);
     }
     
     .hero-title {
