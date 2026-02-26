@@ -1009,6 +1009,13 @@ section > .scroll-indicator {
     margin: 0.5rem 0;
 }
 
+.footer-version {
+    opacity: 0.55;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
 /* ===================================
    Animations
    =================================== */
