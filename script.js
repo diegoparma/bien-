@@ -1,21 +1,4 @@
 // ===================================
-// Parallax Effect on Background
-// ===================================
-const parallaxBg = document.querySelector('.parallax-background');
-
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.pageYOffset;
-    
-    // Move background down as user scrolls down
-    // Negative value to move in same direction as scroll, but slower
-    const moveAmount = -(scrollPosition * 0.6);
-    
-    if (parallaxBg) {
-        parallaxBg.style.transform = `translateY(${moveAmount}px)`;
-    }
-});
-
-// ===================================
 // Navigation & Mobile Menu
 // ===================================
 const hamburger = document.querySelector('.hamburger');
@@ -100,14 +83,6 @@ revealOnScroll();
 
 // Check on scroll
 window.addEventListener('scroll', revealOnScroll);
-
-// ===================================
-// Parallax Effect on Hero
-// ===================================
-const hero = document.querySelector('.hero');
-const heroContent = document.querySelector('.hero-content');
-
-// Removed old parallax effect as we now have background parallax
 
 // ===================================
 // Contact Form Handling
