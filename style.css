@@ -1,0 +1,731 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Menú flotante */
+.floating-nav {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.floating-nav:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(243, 156, 18, 0.2);
+}
+
+.nav-link.active {
+    color: #f39c12;
+    background: rgba(243, 156, 18, 0.15);
+}
+
+/* Responsive para el menú */
+@media (max-width: 768px) {
+    .floating-nav {
+        top: 1rem;
+        padding: 0.4rem 0.8rem;
+        max-width: 90vw;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-list {
+        gap: 0.3rem;
+    }
+    
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}
+
+
+/* Configuración común de secciones */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+}
+
+.content {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+/* Overlay para mejorar legibilidad */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.manifiesto::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.urbana-section::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.bien-section::before {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('fondo_urbana.jpg');
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    z-index: 3;
+    position: relative;
+    opacity: 1 !important;
+}
+
+.hero .content {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title .plus {
+    color: #f39c12;
+    text-shadow: 
+        0 0 20px rgba(243, 156, 18, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.hero-title .plus:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 30px rgba(243, 156, 18, 0.8);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    opacity: 1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.scroll-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, white, transparent);
+    animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Manifiesto */
+.manifiesto {
+    background-image: url('fondo_rural.jpg');
+    color: white;
+}
+
+.manifiesto h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #f39c12;
+}
+
+.manifiesto p {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Secciones +urbana, +rural, +bien */
+.urbana-section {
+    background-image: url('fondo_urbana.jpg');
+    color: white;
+}
+
+.rural-section {
+    background-image: url('fondo_rural.jpg');
+    color: white;
+    position: relative;
+}
+
+.bien-section {
+    background-image: url('fondo_bien.jpg');
+    color: white;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-title .plus {
+    color: #f39c12;
+    text-shadow: 
+        0 0 20px rgba(243, 156, 18, 0.8),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Efecto glow para +urbana */
+.glow-effect:hover {
+    color: #f39c12;
+    text-shadow: 
+        0 0 10px rgba(243, 156, 18, 0.8),
+        0 0 20px rgba(243, 156, 18, 0.6),
+        0 0 30px rgba(243, 156, 18, 0.4);
+    cursor: pointer;
+    transform: scale(1.05);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.urbana-section h3,
+.rural-section h3,
+.bien-section h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    opacity: 1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.urbana-section p,
+.rural-section p,
+.bien-section p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.vision-section {
+    min-height: 70vh;
+}
+
+.vision-section .philosophy-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.verticales-section {
+    background-image: url('fondo_urbana.jpg');
+}
+
+.verticales-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.vertical-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: left;
+    backdrop-filter: blur(8px);
+}
+
+.vertical-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+}
+
+.vertical-subtitle {
+    color: #f39c12;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.vertical-card ul {
+    margin-left: 1rem;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.vertical-card li {
+    font-size: 0.95rem;
+}
+
+.proyectos-section {
+    background-image: url('fondo_bien.jpg');
+}
+
+.projects-intro {
+    max-width: 760px;
+    margin: 0 auto 2rem auto;
+    opacity: 0.95;
+    font-size: 1.1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card h4 {
+    font-size: 1rem;
+    padding: 1rem;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-info-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: left;
+}
+
+.contact-info-card h4 {
+    color: #f39c12;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info-card p,
+.contact-info-card a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+/* Efecto parallax para rural */
+.parallax-bg {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    right: 0;
+    bottom: -50%;
+    background-image: url('fondo_rural.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(0);
+    will-change: transform;
+    z-index: 0;
+}
+
+.rural-section {
+    background: none;
+    overflow: hidden;
+}
+
+.rural-section::before {
+    background: rgba(139, 69, 19, 0.4);
+}
+
+/* Filosofía */
+.filosofia {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    min-height: 80vh;
+}
+
+.filosofia::before {
+    background: none;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.philosophy-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.philosophy-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.philosophy-item .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: grayscale(0.3);
+}
+
+.philosophy-item h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.philosophy-item p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-weight: 300;
+}
+
+blockquote {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: #2c3e50;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding: 2rem;
+    line-height: 1.8;
+}
+
+/* Contacto */
+.contacto {
+    background-image: url('fondo_urbana.jpg');
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    min-height: 100vh;
+}
+
+.contacto h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #f39c12;
+}
+
+.contacto p {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.social-link:hover {
+    background: rgba(243, 156, 18, 0.3);
+    border-color: #f39c12;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 0 25px rgba(243, 156, 18, 0.4);
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover svg {
+    filter: drop-shadow(0 0 8px rgba(243, 156, 18, 0.8));
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+    margin-top: 4rem;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section {
+        padding: 1rem;
+        background-attachment: scroll;
+    }
+    
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .vertical-card {
+        padding: 1.2rem;
+    }
+
+    .project-card img {
+        height: 150px;
+    }
+    
+    .social-links {
+        gap: 1.5rem;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .hero-title {
+        line-height: 1.1;
+    }
+    
+    blockquote::before,
+    blockquote::after {
+        font-size: 2rem;
+    }
+    
+    blockquote::after {
+        bottom: -1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .philosophy-item {
+        padding: 1.5rem;
+    }
+    
+    .content {
+        padding: 0 1rem;
+    }
+
+    .contact-info-card {
+        text-align: center;
+    }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section .content {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.section.in-view .content {
+    opacity: 1;
+}
+
+/* Scroll suave para navegadores que no soportan scroll-behavior */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Estados de loading para imágenes de fondo */
+.section {
+    background-color: #2c3e50;
+    transition: opacity 0.5s ease;
+}
+
+/* Mejoras de performance */
+.parallax-bg,
+.section {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Print styles */
+@media print {
+    .scroll-indicator,
+    .social-links {
+        display: none;
+    }
+    
+    .section {
+        background: none !important;
+        color: #000 !important;
+        min-height: auto;
+        page-break-inside: avoid;
+    }
+}

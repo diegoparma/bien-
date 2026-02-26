@@ -242,9 +242,9 @@ section > .scroll-indicator {
 }
 
 .hero-logo img {
-    height: 280px;
+    height: 420px;
     width: auto;
-    max-width: 90%;
+    max-width: min(90vw, 900px);
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
 }
@@ -889,6 +889,23 @@ section > .scroll-indicator {
     box-shadow: var(--shadow-md);
 }
 
+.whatsapp-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.whatsapp-wrapper h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+.whatsapp-wrapper p {
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -1070,7 +1087,8 @@ section > .scroll-indicator {
     }
     
     .hero-logo img {
-        height: 180px;
+        height: 260px;
+        max-width: 88vw;
     }
     
     .hero-title {

@@ -114,31 +114,33 @@ const heroContent = document.querySelector('.hero-content');
 // ===================================
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Create mailto link
-    const subject = encodeURIComponent('Consulta desde el sitio web Grupo +');
-    const body = encodeURIComponent(
-        `Nombre: ${data.name}\n` +
-        `Email: ${data.email}\n` +
-        `Teléfono: ${data.phone || 'No proporcionado'}\n\n` +
-        `Mensaje:\n${data.message}`
-    );
-    
-    // Open email client
-    window.location.href = `mailto:inmobiliariaurbanarural@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Show success message
-    showNotification('¡Mensaje preparado! Se abrirá tu cliente de correo.');
-    
-    // Reset form
-    contactForm.reset();
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Create mailto link
+        const subject = encodeURIComponent('Consulta desde el sitio web Grupo +');
+        const body = encodeURIComponent(
+            `Nombre: ${data.name}\n` +
+            `Email: ${data.email}\n` +
+            `Teléfono: ${data.phone || 'No proporcionado'}\n\n` +
+            `Mensaje:\n${data.message}`
+        );
+        
+        // Open email client
+        window.location.href = `mailto:inmobiliariaurbanarural@gmail.com?subject=${subject}&body=${body}`;
+        
+        // Show success message
+        showNotification('¡Mensaje preparado! Se abrirá tu cliente de correo.');
+        
+        // Reset form
+        contactForm.reset();
+    });
+}
 
 // ===================================
 // Notification System
