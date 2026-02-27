@@ -43,22 +43,50 @@ window.addEventListener('scroll', () => {
 // ===================================
 // Smooth Scrolling (Enhanced)
 // ===================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const navHeight = navbar.offsetHeight;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
+document.addEventListener('click', (event) => {
+    const anchor = event.target.closest('a[href^="#"]');
+    if (!anchor) {
+        return;
+    }
+
+    const hash = anchor.getAttribute('href');
+    if (!hash || hash === '#') {
+        return;
+    }
+
+    const target = document.getElementById(hash.slice(1));
+    if (!target) {
+        return;
+    }
+
+    event.preventDefault();
+
+    const navHeight = navbar ? navbar.offsetHeight : 0;
+    const targetPosition = Math.max(0, target.getBoundingClientRect().top + window.pageYOffset - navHeight);
+
+    try {
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    } catch (error) {
+        window.scrollTo(0, targetPosition);
+    }
 });
+
+// Footer version based on latest file modification date
+const footerVersionNumber = document.getElementById('footer-version-number');
+if (footerVersionNumber) {
+    const modified = new Date(document.lastModified);
+    if (!Number.isNaN(modified.getTime())) {
+        const year = modified.getFullYear();
+        const month = String(modified.getMonth() + 1).padStart(2, '0');
+        const day = String(modified.getDate()).padStart(2, '0');
+        footerVersionNumber.textContent = `${year}.${month}.${day}`;
+    } else {
+        footerVersionNumber.textContent = 'N/D';
+    }
+}
 
 // ===================================
 // Scroll Reveal Animations
