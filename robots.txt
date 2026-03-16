@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://masinmobiliaria.lat/sitemap.xml
+Sitemap: https://www.masinmobiliaria.lat/sitemap.xml
